@@ -1,7 +1,12 @@
+# 檢查文件是否存在
+import os # 為作業系統模組 operating system
+
 products = []
 
+if os.path.isfile('products.csv'): # 相對路徑
+	print('yeah! 找到檔案了')
 # 讀取檔案
-with open('products.csv', 'r') as f:
+	with open('products.csv', 'r') as f:
 	for line in f:
 		# 想要跳過欄位名稱的字串
 		if '商品, 價格' in line:
@@ -10,7 +15,9 @@ with open('products.csv', 'r') as f:
 		# 字串後面有'\n'，使用stirp()出掉換行符號（\n）
 		name, price = line.strip().split(',') #split 切割 
 		products.append([name, price])
-print(products)
+	print(products)
+else:
+	print('找不到檔案。。。')
 
 # 讓使用者輸入
 while True:
